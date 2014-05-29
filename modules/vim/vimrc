@@ -1,0 +1,152 @@
+" general vim setup
+set nocompatible
+set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
+set lazyredraw
+set shell=/usr/bin/bash
+
+" undo/redo history
+set history=100
+silent !mkdir ~/.vim/undo > /dev/null 2>&1
+set undodir=~/.vim/undo
+set undofile
+
+" shift, tab, indent, backspace
+set backspace=indent,eol,start
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" nicer up and down movement
+map j gj
+map k gk
+map <UP> g<UP>
+map <DOWN> g<DOWN>
+
+" split and navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+set splitbelow
+set splitright
+
+" better search
+set incsearch
+set ignorecase
+set smartcase
+set wrapscan
+
+" look and feel
+syntax enable
+set number
+set ruler
+set showcmd
+set list listchars=tab:→\ ,trail:·
+set scrolloff=1
+set sidescrolloff=5
+set tabpagemax=32
+
+" wildmenu
+set wildmenu
+set wildmode=list:longest,full
+
+" folds
+set foldmethod=syntax
+set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo
+nmap <SPACE> za
+
+" strip whitespaces @ safe
+autocmd BufWritePre * :%s/\s\+$//e
+
+" save/restore view + list dirs
+au BufWinEnter *.* silent loadview
+au BufWinLeave *.* mkview!
+autocmd VimEnter * :if argc() is 0 | Explore | endif
+
+" clipboard
+set clipboard=unnamed
+function! MyPaste()
+    set paste
+    normal "+p
+    set nopaste
+endfunction
+nmap <silent> <C-p> :call MyPaste()<CR>
+imap <silent> <C-p> <ESC>:call MyPaste()<CR>a
+vmap <C-c> "+y
+
+" vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/vundle'
+
+" vimproc
+" required for VimShell
+Plugin 'Shougo/vimproc'
+
+" neocomplete
+" required for VimShell
+Plugin 'Shougo/neocomplete'
+
+" tomorrow theme
+Plugin 'chriskempson/tomorrow-theme'
+set t_Co=256
+source ~/.vim/bundle/tomorrow-theme/vim/colors/Tomorrow.vim
+
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
+
+" airline
+Plugin 'bling/vim-airline'
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
+" delimitMate
+Plugin 'Raimondi/delimitMate'
+
+" syntastic
+Plugin 'scrooloose/syntastic'
+
+" gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+" UltiSnips
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+" tcomment
+Plugin 'tomtom/tcomment_vim'
+
+" VimShell
+Plugin 'Shougo/vimshell.vim'
+
+" matchit
+runtime! macros/matchit.vim
+
+" spell check
+autocmd BufWinEnter * let b:myLang=0
+let g:myLangList=["nospell","de_de","en_gb","es"]
+function! ToggleSpell()
+    let b:myLang=b:myLang+1
+    if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+    if b:myLang==0
+        setlocal nospell
+    else
+        execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+    endif
+    echo "spell checking language:" g:myLangList[b:myLang]
+endfunction
+nmap <silent> <F7> :call ToggleSpell()<CR>
+
+" activate filetype again
+call vundle#end()
+filetype plugin indent on
+
