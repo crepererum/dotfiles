@@ -1,0 +1,8 @@
+# backups
+*.backup
+
+# tmp files
+*~
+*.swp
+*.swo
+

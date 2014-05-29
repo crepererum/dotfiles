@@ -1,0 +1,16 @@
+[core]
+    excludesfile = ~/.gitignore
+
+[user]
+    name = Marco Neumann
+    email = marco@crepererum.net
+
+[push]
+    default = simple
+
+[clean]
+    requireForce = false
+
+[alias]
+    get = clone --depth 1
+
