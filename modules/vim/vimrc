@@ -46,7 +46,7 @@ set number
 set ruler
 set showcmd
 set list listchars=tab:→\ ,trail:·
-set scrolloff=1
+set scrolloff=2
 set sidescrolloff=5
 set tabpagemax=32
 
