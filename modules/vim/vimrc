@@ -65,7 +65,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " save/restore view + list dirs
 au BufWinEnter *.* silent loadview
 au BufWinLeave *.* mkview!
-autocmd VimEnter * :if argc() is 0 | Explore | endif
 
 " clipboard
 set clipboard=unnamed
@@ -127,6 +126,15 @@ Plugin 'tomtom/tcomment_vim'
 
 " VimShell
 Plugin 'Shougo/vimshell.vim'
+
+" startify
+Plugin 'mhinz/vim-startify'
+hi StartifyBracket ctermfg=240
+hi StartifyFooter  ctermfg=111
+hi StartifyHeader  ctermfg=203
+hi StartifyNumber  ctermfg=215
+hi StartifyPath    ctermfg=245
+hi StartifySlash   ctermfg=240
 
 " matchit
 runtime! macros/matchit.vim
