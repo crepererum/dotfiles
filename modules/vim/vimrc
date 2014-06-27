@@ -136,6 +136,9 @@ hi StartifyNumber  ctermfg=215
 hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
 
+" numbertoggle
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
 " matchit
 runtime! macros/matchit.vim
 
