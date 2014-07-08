@@ -67,6 +67,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 au BufWinEnter *.* silent loadview
 au BufWinLeave *.* mkview!
 
+" fix markdown editing
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " clipboard
 set clipboard=unnamed
 function! MyPaste()
