@@ -143,6 +143,11 @@ hi StartifySlash   ctermfg=240
 " numbertoggle
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Ctrl-P
+" (but remap it to Ctrl-S)
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<c-s>'
+
 " matchit
 runtime! macros/matchit.vim
 
