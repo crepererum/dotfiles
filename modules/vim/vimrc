@@ -49,6 +49,7 @@ set list listchars=tab:→\ ,trail:·
 set scrolloff=2
 set sidescrolloff=5
 set tabpagemax=32
+set cursorline
 
 " wildmenu
 set wildmenu
