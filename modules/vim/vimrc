@@ -148,6 +148,29 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-s>'
 
+" distraction-free writing
+" goyo and limelight
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+function! GoyoBefore()
+    set nocursorline
+    set wrap
+    set linebreak
+    set nolist
+    Limelight
+endfunction
+
+function! GoyoAfter()
+    Limelight!
+    set list
+    set nolinebreak
+    set nowrap
+    set cursorline
+endfunction
+
+let g:goyo_width = 120
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
 " matchit
 runtime! macros/matchit.vim
 
