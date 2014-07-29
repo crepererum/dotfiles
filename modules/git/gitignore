@@ -3,6 +3,7 @@
 
 # tmp files
 *~
+.~*
 *.swp
 *.swo
 
