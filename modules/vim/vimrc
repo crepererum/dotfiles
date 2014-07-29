@@ -85,7 +85,7 @@ vmap <C-c> "+y
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " vimproc
 " required for VimShell
