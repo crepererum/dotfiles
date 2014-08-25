@@ -1,6 +1,9 @@
 # backups
 *.backup
 
+# profiling files
+*.prof
+
 # tmp files
 *~
 .~*
