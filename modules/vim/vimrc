@@ -171,6 +171,14 @@ endfunction
 let g:goyo_width = 120
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
+" more text object
+Plugin 'vim-scripts/argtextobj.vim'
+Plugin 'bkad/CamelCaseMotion'
+Plugin 'michaeljsmith/vim-indent-object'
+
+" expand region
+Plugin 'terryma/vim-expand-region'
+
 " matchit
 runtime! macros/matchit.vim
 
