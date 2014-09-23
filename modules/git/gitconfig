@@ -13,4 +13,8 @@
 
 [alias]
     get = clone --depth 1
+    webui = !~/.git-webui/release/libexec/git-core/git-webui
+
+[webui]
+    autoupdate = true
 
