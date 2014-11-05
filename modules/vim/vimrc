@@ -121,8 +121,8 @@ Plugin 'Raimondi/delimitMate'
 " syntastic
 Plugin 'scrooloose/syntastic'
 
-" gitgutter
-Plugin 'airblade/vim-gitgutter'
+" VCS diffs
+Plugin 'mhinz/vim-signify'
 
 " UltiSnips
 Plugin 'SirVer/ultisnips'
