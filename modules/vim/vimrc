@@ -50,6 +50,10 @@ set scrolloff=2
 set sidescrolloff=5
 set tabpagemax=32
 set cursorline
+set ttimeoutlen=0
+set noerrorbells
+set visualbell
+set t_vb =
 
 " wildmenu
 set wildmenu
