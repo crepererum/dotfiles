@@ -161,6 +161,9 @@ function! GoyoBefore()
     set wrap
     set linebreak
     set nolist
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
     Limelight
 endfunction
 
@@ -170,6 +173,9 @@ function! GoyoAfter()
     set nolinebreak
     set nowrap
     set cursorline
+    set showmode
+    set showcmd
+    set scrolloff=2
 endfunction
 
 let g:goyo_width = 120
