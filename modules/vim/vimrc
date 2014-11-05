@@ -189,6 +189,12 @@ Plugin 'michaeljsmith/vim-indent-object'
 " expand region
 Plugin 'terryma/vim-expand-region'
 
+" incremental search
+Plugin 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
 " matchit
 runtime! macros/matchit.vim
 
