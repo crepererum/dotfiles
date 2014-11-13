@@ -3,8 +3,9 @@
 # cleanup
 rm -rIf ~/.vimrc ~/.viminfo ~/.vim
 
-# link .vimrc
+# link .vimrc and .nvimrc
 ln -s $mdir/vimrc ~/.vimrc
+ln -s ~/.vimrc ~/.nvimrc
 
 # install vundle
 mkdir -p ~/.vim/bundle
