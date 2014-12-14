@@ -7,6 +7,10 @@ rm -rIf ~/.vimrc ~/.viminfo ~/.vim
 ln -s $mdir/vimrc ~/.vimrc
 ln -s ~/.vimrc ~/.nvimrc
 
+# create view dirs
+mkdir -p ~/.vim/view
+mkdir -p ~/.nvim/view
+
 # install vim-plug
 mkdir -p ~/.vim/autoload
 curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
