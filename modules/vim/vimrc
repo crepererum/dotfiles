@@ -91,58 +91,59 @@ nmap <silent> <C-p> :call MyPaste()<CR>
 imap <silent> <C-p> <ESC>:call MyPaste()<CR>a
 vmap <C-c> "+y
 
-" vundle
+" vim-plug
+source ~/.vim/autoload/plug.vim
+call plug#begin('~/.vim/plugged')
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plug 'junegunn/vim-plug'
 
 " vimproc
 " required for VimShell
-Plugin 'Shougo/vimproc'
+Plug 'Shougo/vimproc'
 
-" neocomplete
-" required for VimShell
-Plugin 'Shougo/neocomplete'
+" neocomplcache
+" optional for VimShell
+Plug 'Shougo/neocomplcache.vim'
 
 " tomorrow theme
-Plugin 'chriskempson/tomorrow-theme'
+Plug 'chriskempson/tomorrow-theme'
 set t_Co=256
-source ~/.vim/bundle/tomorrow-theme/vim/colors/Tomorrow.vim
+set rtp+=~/.vim/plugged/tomorrow-theme/vim
+source ~/.vim/plugged/tomorrow-theme/vim/colors/Tomorrow.vim
 
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_add_preview_to_completeopt = 0
 set completeopt-=preview
 
 " airline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " delimitMate
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " syntastic
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " VCS diffs
-Plugin 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify'
 
 " UltiSnips
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 " tcomment
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " VimShell
-Plugin 'Shougo/vimshell.vim'
+Plug 'Shougo/vimshell.vim'
 
 " startify
-Plugin 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify'
 hi StartifyBracket ctermfg=240
 hi StartifyFooter  ctermfg=111
 hi StartifyHeader  ctermfg=203
@@ -150,18 +151,28 @@ hi StartifyNumber  ctermfg=215
 hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
 
+" julia
+Plug 'JuliaLang/julia-vim'
+let g:julia_latex_to_unicode = 0
+
+" rust
+Plug 'wting/rust.vim'
+
 " numbertoggle
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Ctrl-P
 " (but remap it to Ctrl-S)
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-s>'
+
+" EasyMotion
+Plug 'Lokaltog/vim-easymotion'
 
 " distraction-free writing
 " goyo and limelight
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 function! GoyoBefore()
     set nocursorline
     set wrap
@@ -188,15 +199,15 @@ let g:goyo_width = 120
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 " more text object
-Plugin 'vim-scripts/argtextobj.vim'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'michaeljsmith/vim-indent-object'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'michaeljsmith/vim-indent-object'
 
 " expand region
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 
 " incremental search
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -220,6 +231,6 @@ endfunction
 nmap <silent> <F7> :call ToggleSpell()<CR>
 
 " activate filetype again
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 

@@ -7,10 +7,10 @@ rm -rIf ~/.vimrc ~/.viminfo ~/.vim
 ln -s $mdir/vimrc ~/.vimrc
 ln -s ~/.vimrc ~/.nvimrc
 
-# install vundle
-mkdir -p ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+# install vim-plug
+mkdir -p ~/.vim/autoload
+curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qa
 
 # install YouCompleteMe
 #cd ~/.vim/bundle/YouCompleteMe
