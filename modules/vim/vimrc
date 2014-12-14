@@ -4,6 +4,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 set lazyredraw
+set ttyfast
 set shell=/usr/bin/bash
 
 " neovim fixes
