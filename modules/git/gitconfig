@@ -18,3 +18,7 @@
 [webui]
     autoupdate = true
 
+[diff]
+    algorithm = histogram
+    dirstat = lines
+
