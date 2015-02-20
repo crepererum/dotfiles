@@ -4,12 +4,14 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 set lazyredraw
-set ttyfast
+set mouse=a
 set shell=/usr/bin/bash
 
 " neovim fixes
 if has('nvim')
     runtime! python_setup.vim
+else
+    set ttyfast
 endif
 
 " undo/redo history
@@ -110,9 +112,8 @@ Plug 'Shougo/neocomplcache.vim'
 
 " tomorrow theme
 Plug 'chriskempson/tomorrow-theme'
-set t_Co=256
 set rtp+=~/.vim/plugged/tomorrow-theme/vim
-source ~/.vim/plugged/tomorrow-theme/vim/colors/Tomorrow.vim
+colorscheme Tomorrow
 
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
