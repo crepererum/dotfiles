@@ -115,6 +115,9 @@ Plug 'chriskempson/tomorrow-theme'
 set rtp+=~/.vim/plugged/tomorrow-theme/vim
 colorscheme Tomorrow
 
+" SudoRead and SudoWrite
+Plug 'chrisbra/SudoEdit.vim'
+
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
