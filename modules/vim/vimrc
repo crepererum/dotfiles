@@ -37,6 +37,9 @@ map <DOWN> g<DOWN>
 " faster command line commands
 nnoremap ! :!
 
+" faster edit mode exit
+inoremap <M-i> <ESC>
+
 " split and navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
