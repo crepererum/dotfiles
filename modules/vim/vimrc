@@ -227,6 +227,12 @@ map g/ <Plug>(incsearch-stay)
 " floobits
 Plug 'floobits/floobits-neovim'
 
+" exchange
+Plug 'tommcdo/vim-exchange'
+
+" NrrwRgn
+Plug 'chrisbra/NrrwRgn'
+
 " matchit
 runtime! macros/matchit.vim
 
