@@ -137,8 +137,11 @@ Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
-" syntastic
-Plug 'scrooloose/syntastic'
+" neomake
+" supersets: syntastic
+Plug 'benekastah/neomake'
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost * Neomake
 
 " VCS diffs
 Plug 'mhinz/vim-signify'
