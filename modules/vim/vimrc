@@ -12,6 +12,7 @@ if has('nvim')
     runtime! python_setup.vim
 else
     set ttyfast
+    set t_Co=256
 endif
 
 " undo/redo history
