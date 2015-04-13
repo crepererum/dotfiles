@@ -186,6 +186,9 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<c-s>'
 
+" Ag (the_silver_searcher)
+Plug 'rking/ag.vim'
+
 " EasyMotion
 Plug 'Lokaltog/vim-easymotion'
 
