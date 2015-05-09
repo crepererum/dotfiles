@@ -144,6 +144,10 @@ Plug 'benekastah/neomake'
 let g:neomake_javascript_enabled_makers = ['eslint']
 autocmd! BufWritePost * Neomake
 
+" editorconfig
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " VCS diffs
 Plug 'mhinz/vim-signify'
 
