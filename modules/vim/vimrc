@@ -237,6 +237,9 @@ Plug 'tommcdo/vim-exchange'
 " NrrwRgn
 Plug 'chrisbra/NrrwRgn'
 
+" better diff
+Plug 'chrisbra/vim-diff-enhanced'
+
 " matchit
 runtime! macros/matchit.vim
 
