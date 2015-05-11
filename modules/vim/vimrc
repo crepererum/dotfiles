@@ -82,10 +82,6 @@ nmap <SPACE> za
 " strip whitespaces @ safe
 autocmd BufWritePre * :%s/\s\+$//e
 
-" save/restore view + list dirs
-au BufWinEnter *.* silent loadview
-au BufWinLeave *.* mkview!
-
 " fix markdown editing
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -105,6 +101,9 @@ source ~/.vim/autoload/plug.vim
 call plug#begin('~/.vim/plugged')
 filetype off
 Plug 'junegunn/vim-plug'
+
+" restore_vim.vim
+Plug 'vim-scripts/restore_view.vim'
 
 " vimproc
 " required for VimShell
