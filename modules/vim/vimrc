@@ -70,6 +70,9 @@ set noerrorbells
 set visualbell
 set t_vb =
 
+" bigger syntax scan range
+autocmd BufEnter * :syntax sync minlines=500
+
 " wildmenu
 set wildmenu
 set wildmode=list:longest,full
