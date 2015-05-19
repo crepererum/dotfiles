@@ -13,6 +13,7 @@
 
 [alias]
     get = clone --depth 1
+    fixup = commit --amend --no-edit
     webui = !~/.git-webui/release/libexec/git-core/git-webui
 
 [webui]
