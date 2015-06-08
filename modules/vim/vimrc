@@ -107,6 +107,10 @@ Plug 'junegunn/vim-plug'
 
 " restore_vim.vim
 Plug 'vim-scripts/restore_view.vim'
+let g:skipview_files = [
+    \'.git/COMMIT_EDITMSG',
+    \'.git/rebase-merge/git-rebase-todo'
+    \]
 
 " vimproc
 " required for VimShell
