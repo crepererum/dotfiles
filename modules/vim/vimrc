@@ -128,6 +128,9 @@ colorscheme Tomorrow
 " SudoRead and SudoWrite
 Plug 'chrisbra/SudoEdit.vim'
 
+" Pencil
+Plug 'reedes/vim-pencil'
+
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
