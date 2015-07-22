@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+curl --location --silent https://api.travis-ci.org/jobs/$1/log.txt 2>&1 | less -R
