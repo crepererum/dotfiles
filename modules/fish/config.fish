@@ -15,6 +15,9 @@ set -x EDITOR nvim
 # suppress the pointless welcome message
 set fish_greeting ""
 
+# extend PATH
+set -gx PATH $HOME/scripts $PATH
+
 # colorful man pages
 set -xU LESS_TERMCAP_mb (printf "\e[01;31m")      # begin blinking
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")      # begin bold
