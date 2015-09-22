@@ -155,7 +155,7 @@ autocmd! BufWritePost * Neomake
 
 " PreserveNoEOL
 " required by editorconfig to handle this specific rule
-Plug 'vim-scripts/PreserveNoEOL'
+" Plug 'vim-scripts/PreserveNoEOL'
 
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
