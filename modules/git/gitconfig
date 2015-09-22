@@ -16,6 +16,7 @@
     get = clone --depth 1
     fixup = commit --amend --no-edit
     tree = log --oneline --decorate --graph --abbrev-commit
+    wdiff = diff --color-words --ignore-all-space
     webui = !~/.git-webui/release/libexec/git-core/git-webui
 
 [webui]
@@ -24,4 +25,5 @@
 [diff]
     algorithm = histogram
     dirstat = lines
+    wordRegex = [[:alnum:]_]+|[^[:alnum:]_[:space:]]+
 
