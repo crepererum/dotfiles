@@ -4,6 +4,7 @@
 [user]
     name = Marco Neumann
     email = marco@crepererum.net
+    signingkey = 0x91A1F090016B1CC2
 
 [push]
     default = simple
