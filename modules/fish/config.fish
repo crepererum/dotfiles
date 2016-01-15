@@ -16,7 +16,7 @@ set -x EDITOR nvim
 set fish_greeting ""
 
 # extend PATH
-set -gx PATH $HOME/scripts $PATH
+set -gx PATH $HOME/scripts $HOME/.cargo/bin $PATH
 
 # colorful man pages
 set -xU LESS_TERMCAP_mb (printf "\e[01;31m")      # begin blinking
