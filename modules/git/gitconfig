@@ -28,3 +28,11 @@
     dirstat = lines
     wordRegex = [[:alnum:]_]+|[^[:alnum:]_[:space:]]+
 
+[transfer]
+    fsckobjects = true
+
+[fetch]
+    fsckobjects = true
+
+[receive]
+    fsckObjects = true
