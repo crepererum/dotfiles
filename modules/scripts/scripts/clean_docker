@@ -1,4 +1,6 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 echo "Removing exited docker containers..."
 docker rm -v $(docker ps -a -f status=exited -q)

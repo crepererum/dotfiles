@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # create .gnuppg if not exist
 mkdir -p ~/.gnupg
