@@ -200,10 +200,10 @@ Plug 'wting/rust.vim'
 " numbertoggle
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
-" Ctrl-P
+" CTRL-Space
 " (but remap it to Ctrl-S)
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = '<c-s>'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+nnoremap <silent><C-s> :CtrlSpace O<CR>
 
 " Ag (the_silver_searcher)
 Plug 'rking/ag.vim'
