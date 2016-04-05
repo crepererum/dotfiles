@@ -6,6 +6,7 @@ set termencoding=utf-8
 set lazyredraw
 set mouse=a
 set shell=/usr/bin/bash
+set hidden
 
 " neovim fixes
 if has('nvim')
