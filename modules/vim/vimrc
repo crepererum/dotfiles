@@ -139,7 +139,8 @@ let g:ycm_add_preview_to_completeopt = 0
 set completeopt-=preview
 
 " airline
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 set laststatus=2
 let g:airline_powerline_fonts = 1
 
