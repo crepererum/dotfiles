@@ -167,6 +167,9 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 " VCS diffs
 Plug 'mhinz/vim-signify'
 
+" GIT commands
+Plug 'tpope/vim-fugitive'
+
 " UltiSnips
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
