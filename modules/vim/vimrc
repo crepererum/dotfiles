@@ -266,6 +266,9 @@ Plug 'chrisbra/NrrwRgn'
 " better diff
 Plug 'chrisbra/vim-diff-enhanced'
 
+" sneak
+Plug 'justinmk/vim-sneak'
+
 " matchit
 runtime! macros/matchit.vim
 
