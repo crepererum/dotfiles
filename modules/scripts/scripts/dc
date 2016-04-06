@@ -6,4 +6,4 @@ gitrepo=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
 foldername=$(basename $(pwd))
 projectname=$(echo ${foldername}_$gitrepo | sed 's/[^a-zA-Z0-9_]//g')
 
-docker-compose --project-name $projectname $@
+exec docker-compose --project-name $projectname $@
