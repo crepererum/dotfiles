@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+input=$1
+output=$2
+
+exec gs \
+    -dBATCH \
+    -dCompatibilityLevel=1.6 \
+    -dCompressFonts=true \
+    -dCompressPages=true \
+    -dDetectDuplicateImages=true \
+    -dEmbedAllFonts=true \
+    -dNOPAUSE \
+    -dPDFSETTINGS=/prepress \
+    -dSubsetFonts=true \
+    -sDEVICE=pdfwrite \
+    -sOutputFile=$output \
+    $input
