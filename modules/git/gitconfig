@@ -26,6 +26,7 @@
 [diff]
     algorithm = histogram
     dirstat = lines
+    renames = copies
     wordRegex = [[:alnum:]_]+|[^[:alnum:]_[:space:]]+
 
 [transfer]
