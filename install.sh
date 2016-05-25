@@ -4,7 +4,7 @@ set -euo pipefail
 
 export dfdir=$(realpath $(dirname $0))
 
-if [ ! -z "$1" ]; then
+if [ "$#" == "1" ]; then
     modules=$(echo $1 | sed "s/,/ /g")
 else
     modules=$(ls $dfdir/modules)
