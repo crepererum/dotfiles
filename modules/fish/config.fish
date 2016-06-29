@@ -39,3 +39,6 @@ end
 function q++o
     clang++ -std=c++14 -O2 -Wall -Weverything -Wno-c++98-compat -Wno-c99-extensions -o (rootname $argv[1]) $argv
 end
+
+# Base16 Shell
+eval sh $HOME/.config/base16-shell/base16-bright.dark.sh
