@@ -122,9 +122,11 @@ Plug 'Shougo/vimproc'
 Plug 'Shougo/neocomplcache.vim'
 
 " tomorrow theme
-Plug 'chriskempson/tomorrow-theme'
-set rtp+=~/.vim/plugged/tomorrow-theme/vim
-colorscheme Tomorrow-Night
+Plug 'chriskempson/base16-vim'
+set rtp+=~/.vim/plugged/base16-vim
+set background=dark
+let base16colorspace=256
+colorscheme base16-bright
 
 " SudoRead and SudoWrite
 Plug 'chrisbra/SudoEdit.vim'
