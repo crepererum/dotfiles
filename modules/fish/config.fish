@@ -29,6 +29,8 @@ set -xU LESS_TERMCAP_us (printf "\e[01;32m")      # begin underline
 
 # go back alias
 alias - "cd -"
+alias ... "cd ../.."
+alias .... "cd ../../.."
 
 # clang++ quick test alias
 function q++d
