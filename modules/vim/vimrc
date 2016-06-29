@@ -287,6 +287,10 @@ function! ToggleSpell()
 endfunction
 nmap <silent> <F7> :call ToggleSpell()<CR>
 
+" highlight overlong lines
+" HINT: needs to go at the very bottom of the file
+let &colorcolumn=join(range(121,999),",")
+
 " activate filetype again
 call plug#end()
 filetype plugin indent on
