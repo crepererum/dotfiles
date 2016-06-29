@@ -32,8 +32,8 @@ alias - "cd -"
 
 # clang++ quick test alias
 function q++d
-    clang++ -std=c++14 -g -Wall -Weverything -Wno-c++98-compat -o (rootname $argv[1]) $argv
+    clang++ -std=c++14 -g -Wall -Weverything -Wno-c++98-compat -Wno-c99-extensions -o (rootname $argv[1]) $argv
 end
 function q++o
-    clang++ -std=c++14 -O2 -Wall -Weverything -Wno-c++98-compat -o (rootname $argv[1]) $argv
+    clang++ -std=c++14 -O2 -Wall -Weverything -Wno-c++98-compat -Wno-c99-extensions -o (rootname $argv[1]) $argv
 end
