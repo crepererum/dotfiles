@@ -277,7 +277,7 @@ runtime! macros/matchit.vim
 
 " spell check
 autocmd BufWinEnter * let b:myLang=0
-let g:myLangList=["nospell","de_de","en_gb","es"]
+let g:myLangList=["nospell","de_de","en_us","es"]
 function! ToggleSpell()
     let b:myLang=b:myLang+1
     if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
