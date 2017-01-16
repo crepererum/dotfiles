@@ -41,4 +41,4 @@ function q++o
 end
 
 # Base16 Shell
-eval sh $HOME/.config/base16-shell/base16-bright.dark.sh
+eval sh $HOME/.config/base16-shell/scripts/base16-bright.sh
