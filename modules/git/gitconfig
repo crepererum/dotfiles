@@ -16,7 +16,7 @@
 [alias]
     addgh = "!(echo '[remote \"'$1'\"]\n    fetch = +refs/heads/*:refs/remotes/'$1'/*\n    url = git@github.com:'$1'/'$2'.git\n    fetch = +refs/pull/*/head:refs/remotes/'$1'/pr/*' >> .git/config) && echo OK"
     get = clone --depth 1
-    fixup = commit --amend --no-edit
+    fixup = commit --amend --no-edit --date=now
     tree = log --oneline --decorate --graph --abbrev-commit
     wdiff = diff --color-words --ignore-all-space
     webui = !~/.git-webui/release/libexec/git-core/git-webui
