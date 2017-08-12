@@ -62,7 +62,7 @@ set number
 set ruler
 set showcmd
 set list listchars=tab:→\ ,trail:·
-set scrolloff=5
+set scrolloff=8
 set sidescrolloff=10
 set tabpagemax=32
 set cursorline
@@ -247,7 +247,7 @@ function! GoyoAfter()
     set cursorline
     set showmode
     set showcmd
-    set scrolloff=5
+    set scrolloff=8
 endfunction
 
 let g:goyo_width = 120
