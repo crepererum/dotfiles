@@ -12,3 +12,5 @@
 # python virtualenv
 .venv*
 
+# Mac OS
+.DS_Store
