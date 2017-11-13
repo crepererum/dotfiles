@@ -13,4 +13,4 @@ mkdir -p ~/.config/fish
 ln -s $mdir/config.fish ~/.config/fish/config.fish
 
 # install fisherman plugins
-fish -c "fisher nitro"
+fish -c "fisher metro limeth/jellyfish"
