@@ -10,3 +10,12 @@ ln -s $mdir/gitconfig ~/.gitconfig
 ln -s $mdir/gitignore ~/.gitignore
 git clone https://github.com/alberthier/git-webui.git ~/.git-webui
 
+# create hooks if not exist
+mkdir -p ~/.githooks
+
+# link all hooks to that directory
+for f in $mdir/hooks/*; do
+    t="$HOME/.githooks/$(basename $f)"
+    rm -f "$t"
+    ln -s "$f" "$t"
+done

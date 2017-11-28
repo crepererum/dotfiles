@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# check DEBUG statements
+# use additional quotes here so we are able to commit THIS file with THIS filter (inception :D )
+for FILE in `git diff --name-only --cached`; do
+    set +e
+    grep 'XXX''-DEBUG' $FILE 2>&1 >/dev/null
+    status=$?
+    set -e
+    if [ $status -eq 0 ]; then
+        echo $FILE ' contains XXX''-DEBUG'
+        exit 1
+    fi
+done
+
+exit 0
