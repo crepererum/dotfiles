@@ -12,6 +12,9 @@ end
 # default editor
 set -x EDITOR nvim
 
+# default key bindings (sometimes missing, for some reason)
+set fish_key_bindings fish_default_key_bindings
+
 # suppress the pointless welcome message
 set fish_greeting ""
 
