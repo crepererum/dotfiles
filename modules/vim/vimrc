@@ -282,6 +282,9 @@ Plug 'chrisbra/vim-diff-enhanced'
 " sneak
 Plug 'justinmk/vim-sneak'
 
+" better Python indention
+Plug 'Vimjas/vim-python-pep8-indent'
+
 " matchit
 runtime! macros/matchit.vim
 
