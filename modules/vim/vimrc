@@ -208,7 +208,7 @@ Plug 'JuliaLang/julia-vim'
 let g:julia_latex_to_unicode = 0
 
 " rust
-Plug 'wting/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " numbertoggle
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
