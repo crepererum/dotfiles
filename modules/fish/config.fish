@@ -21,6 +21,12 @@ set fish_greeting ""
 # extend PATH
 set -gx PATH $HOME/scripts $HOME/.cargo/bin $PATH
 
+# enable conda
+set conda_fish $HOME/miniconda3/etc/fish/conf.d/conda.fish
+if test -e $conda_fish
+    source $conda_fish
+end
+
 # colorful man pages
 set -xU LESS_TERMCAP_mb (printf "\e[01;31m")      # begin blinking
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")      # begin bold
