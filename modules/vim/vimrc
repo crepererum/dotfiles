@@ -83,8 +83,11 @@ set foldmethod=syntax
 set foldopen=block,hor,jump,mark,percent,quickfix,search,tag,undo
 nmap <SPACE> za
 
-" strip whitespaces @ safe
-autocmd BufWritePre * :%s/\s\+$//e
+" strip whitespaces @ safe (except diff files)
+autocmd BufWritePre *
+    \ if &filetype != "diff"
+    \ | :%s/\s\+$//e
+    \ | endif
 
 " fix markdown editing
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
