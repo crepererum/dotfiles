@@ -11,6 +11,9 @@
 [push]
     default = simple
 
+[pull]
+    ff = only
+
 [clean]
     requireForce = false
 
@@ -34,6 +37,9 @@
     dirstat = lines
     renames = copies
     wordRegex = [[:alnum:]_]+|[^[:alnum:]_[:space:]]+
+
+[merge]
+    ff = false
 
 [transfer]
     fsckobjects = true
