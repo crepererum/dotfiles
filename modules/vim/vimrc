@@ -30,12 +30,6 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" nicer up and down movement
-map j gj
-map k gk
-map <UP> g<UP>
-map <DOWN> g<DOWN>
-
 " faster command line commands
 nnoremap ! :!
 
