@@ -206,6 +206,9 @@ hi StartifyNumber  ctermfg=215
 hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
 
+" shebang filetype detection
+Plug 'vitalk/vim-shebang'
+
 " julia
 Plug 'JuliaLang/julia-vim'
 let g:julia_latex_to_unicode = 0
