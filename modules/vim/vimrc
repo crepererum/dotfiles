@@ -266,7 +266,7 @@ Plug 'haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-map <F8> :nohlsearch<CR>
+map <silent> <F8> :nohlsearch<CR>
 
 " floobits
 Plug 'floobits/floobits-neovim'
