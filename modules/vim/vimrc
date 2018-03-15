@@ -286,6 +286,10 @@ Plug 'justinmk/vim-sneak'
 " better Python indention
 Plug 'Vimjas/vim-python-pep8-indent'
 
+" undo-redo tree
+Plug 'simnalamburt/vim-mundo'
+nnoremap <F5> :MundoToggle<CR>
+
 " matchit
 runtime! macros/matchit.vim
 
