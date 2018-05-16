@@ -140,13 +140,6 @@ Plug 'chrisbra/SudoEdit.vim'
 " Pencil
 Plug 'reedes/vim-pencil'
 
-" YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_rust_src_path = '~/rust_src/src'
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
-
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -158,11 +151,23 @@ Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
-" neomake
-" supersets: syntastic
-Plug 'benekastah/neomake'
-let g:neomake_javascript_enabled_makers = ['eslint']
-autocmd! BufWritePost * Neomake
+" language server (autocompletion, warnings/errors)
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
+Plug 'roxma/nvim-completion-manager'
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rls'],
+    \ }
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <F3> :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " PreserveNoEOL
 " required by editorconfig to handle this specific rule
