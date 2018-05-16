@@ -28,7 +28,6 @@
     upush = "!(git push --set-upstream $1 $(git symbolic-ref HEAD | sed s:refs/heads/::)) && echo OK"
     xtree = log --decorate --graph --topo-order
     wdiff = diff --color-words --ignore-all-space
-    webui = !~/.git-webui/release/libexec/git-core/git-webui
 
 [webui]
     autoupdate = true
