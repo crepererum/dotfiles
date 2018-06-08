@@ -87,12 +87,34 @@ autocmd BufWritePre *
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " figure out the system Python for Neovim
-if exists("$VIRTUAL_ENV")
-    let g:python_host_prog=substitute(system("which -a python2 | head -n2 | tail -n1"), "\n", '', 'g')
-    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+function GetWhichFirst(programs)
+    let l:candidate=''
+    for p in a:programs
+        let l:candidate=substitute(system("which " . p), "\n", '', 'g')
+        if l:candidate != ''
+            break
+        endif
+    endfor
+    return l:candidate
+endfunction
+function GetWhichSecond(programs)
+    let l:candidate=''
+    for p in a:programs
+        let l:candidate=substitute(system("which -a " . p . " | head -n2 | tail -n1"), "\n", '', 'g')
+        if l:candidate != ''
+            break
+        endif
+    endfor
+    return l:candidate
+endfunction
+let s:candidates_python2=['python2.7', 'python2']
+let s:candidates_python3=['python3.6', 'python3']
+if exists("$VIRTUAL_ENV") || exists("$CONDA_PREFIX")
+    let g:python_host_prog=GetWhichSecond(s:candidates_python2)
+    let g:python3_host_prog=GetWhichSecond(s:candidates_python3)
 else
-    let g:python_host_prog=substitute(system("which python2"), "\n", '', 'g')
-    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+    let g:python_host_prog=GetWhichFirst(s:candidates_python2)
+    let g:python3_host_prog=GetWhichFirst(s:candidates_python3)
 endif
 
 " clipboard
