@@ -9,12 +9,7 @@ set shell=/usr/bin/bash
 set hidden
 
 " neovim fixes
-if has('nvim')
-    runtime! python_setup.vim
-else
-    set ttyfast
-    set t_Co=256
-endif
+runtime! python_setup.vim
 
 " undo/redo history
 set history=100
@@ -129,8 +124,7 @@ imap <silent> <C-p> <ESC>:call MyPaste()<CR>a
 vmap <C-c> "+y
 
 " vim-plug
-source ~/.vim/autoload/plug.vim
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/neovim/plugged')
 filetype off
 Plug 'junegunn/vim-plug'
 
