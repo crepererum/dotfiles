@@ -170,10 +170,17 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
-Plug 'roxma/nvim-completion-manager'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rls'],
+    \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ }
+let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
@@ -181,6 +188,7 @@ nnoremap <silent> <F3> :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " PreserveNoEOL
 " required by editorconfig to handle this specific rule
