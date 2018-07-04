@@ -294,9 +294,6 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 map <silent> <F8> :nohlsearch<CR>
 
-" floobits
-Plug 'floobits/floobits-neovim'
-
 " exchange
 Plug 'tommcdo/vim-exchange'
 
