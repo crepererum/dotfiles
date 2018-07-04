@@ -244,8 +244,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'vim-ctrlspace/vim-ctrlspace'
 nnoremap <silent><C-s> :CtrlSpace O<CR>
 
-" Ag (the_silver_searcher)
-Plug 'rking/ag.vim'
+" Ripgrep
+Plug 'jremmen/vim-ripgrep'
 
 " EasyMotion
 Plug 'Lokaltog/vim-easymotion'
