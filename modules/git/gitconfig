@@ -1,4 +1,5 @@
 [core]
+    commitGraph = true
     excludesfile = ~/.gitignore
     hooksPath = ~/.githooks
     sparsecheckout = true
