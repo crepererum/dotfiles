@@ -6,12 +6,13 @@ readonly git_path=$1
 
 worktrees=$(git -C "$git_path" worktree list | sed -E 's/^([^ ]*).*$/\1/')
 
+echo "delete unused worktrees..."
 for w in $worktrees; do
-    echo "$w"
+    echo "  $w"
     if [[ -f "$w/.git" ]]; then
-        echo "  => worktree"
+        echo "    => worktree"
         if [[ -z "$(git -C "$w" status --porcelain)" ]]; then
-            echo "    => clean"
+            echo "      => clean"
             local_branch="$(git -C "$w" rev-parse --abbrev-ref HEAD)"
 
             set +e
@@ -20,29 +21,49 @@ for w in $worktrees; do
             set -e
 
             if [[ $has_remote == 0 ]]; then
-                echo "      => w/ remote"
+                echo "        => w/ remote"
                 if [[ "x$(git -C $w rev-parse $local_branch)" == "x$(git -C "$w" rev-parse "$remote_branch")" ]]; then
-                    echo "        => in-sync"
-                    echo "          => DELETE"
+                    echo "          => in-sync"
+                    echo "            => DELETE"
                     rm -rf "$w"
                 else
-                    echo "        => out-of-sync"
+                    echo "          => out-of-sync"
                 fi
             else
-                echo "      => local only"
+                echo "        => local only"
             fi
         else
-            echo "    => dirty"
+            echo "      => dirty"
         fi
     elif [[ -d "$w/.git" ]]; then
-        echo "  => master copy"
+        echo "    => master copy"
     else
-        echo "  => missing"
+        echo "    => missing"
     fi
 done
+echo "done"
 
 echo "worktree prune..."
 git -C "$git_path" worktree prune
+echo "done"
+
+echo "prune remotes..."
+for remote in $(git -C "$git_path" remote); do
+    echo "  $remote"
+    url="$(git -C "$git_path" remote get-url "$remote")"
+    if [[ "$url" == /* ]]; then
+        echo "    => path"
+        if [[ -e "$url" ]]; then
+            echo "      => exists"
+        else
+            echo "      => gone"
+            git -C "$git_path" remote remove "$remote"
+        fi
+    else
+        echo "    => remote, prune branches"
+        git -C "$git_path" remote prune "$remote"
+    fi
+done
 echo "done"
 
 echo "gc --aggressive..."
