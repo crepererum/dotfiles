@@ -77,3 +77,7 @@ echo "done"
 echo "rebuild commit graph..."
 git -C "$git_path" show-ref -s | git -C "$git_path" commit-graph write --stdin-commits
 echo "done"
+
+echo "clean up..."
+rm -f "$git_path/.git/gc.log"
+echo "done"
