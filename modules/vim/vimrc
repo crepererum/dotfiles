@@ -172,13 +172,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'junegunn/fzf'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
@@ -192,6 +185,31 @@ nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" fzf (required for LanguageClient)
+Plug 'junegunn/fzf'
+
+" auto-completion engine
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:neosnippet#enable_completed_snippet = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+" UltiSnips
+" Plug 'SirVer/ultisnips'
+" let g:UltiSnipsExpandTrigger="<c-j>"
+" Snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.local/share/neovim/vim-snippets/snippets'
+imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-j>     <Plug>(neosnippet_expand_target)
 
 " PreserveNoEOL
 " required by editorconfig to handle this specific rule
@@ -208,11 +226,6 @@ Plug 'mhinz/vim-signify'
 " GIT commands
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/conflict-marker.vim'
-
-" UltiSnips
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<c-j>"
 
 " tcomment
 Plug 'tomtom/tcomment_vim'
