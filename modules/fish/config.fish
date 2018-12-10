@@ -41,6 +41,9 @@ alias .- "cd -"
 alias ... "cd ../.."
 alias .... "cd ../../.."
 
+# short forms
+alias nv nvim
+
 # clang++ quick test alias
 function q++d
     clang++ -std=c++14 -g -Wall -Weverything -Wno-c++98-compat -Wno-c99-extensions -o (rootname $argv[1]) $argv
