@@ -255,10 +255,8 @@ Plug 'rust-lang/rust.vim'
 " numbertoggle
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
-" CTRL-Space
-" (but remap it to Ctrl-S)
-Plug 'vim-ctrlspace/vim-ctrlspace'
-nnoremap <silent><C-s> :CtrlSpace O<CR>
+" CTRL-P
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Ripgrep
 Plug 'jremmen/vim-ripgrep'
