@@ -327,6 +327,10 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'simnalamburt/vim-mundo'
 nnoremap <silent> <F5> :MundoToggle<CR>
 
+" NERDTree
+Plug 'scrooloose/nerdtree'
+nnoremap <silent> <F10> :NERDTreeToggle<CR>
+
 " matchit
 runtime! macros/matchit.vim
 
