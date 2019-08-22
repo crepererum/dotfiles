@@ -59,3 +59,6 @@
 
 [protocol]
     version = 2
+
+[rebase]
+    autosquash = true
