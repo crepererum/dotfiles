@@ -70,6 +70,10 @@ echo "gc --aggressive..."
 git -C "$git_path" gc --aggressive
 echo "done"
 
+echo "prune..."
+git -C "$git_path" prune
+echo "done"
+
 echo "fsck --full"
 git -C "$git_path" fsck --full
 echo "done"
