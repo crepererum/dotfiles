@@ -4,6 +4,9 @@
     hooksPath = ~/.githooks
     sparsecheckout = true
 
+[feature]
+    manyFiles = true
+
 [user]
     name = Marco Neumann
     email = marco@crepererum.net
