@@ -27,6 +27,7 @@
     cob = checkout -b
     get = clone --depth 1
     fixup = commit --amend --no-edit --date=now
+    fpush = push --force-with-lease
     pick = cherry-pick
     tree = log --oneline --decorate --graph --abbrev-commit --author-date-order
     upush = "!(git push --set-upstream $1 $(git symbolic-ref HEAD | sed s:refs/heads/::)) && echo OK"
@@ -50,18 +51,16 @@
 
 [fetch]
     fsckobjects = true
+    writeCommitGraph = true
 
 [receive]
     fsckObjects = true
-
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
 
 [protocol]
     version = 2
 
 [rebase]
     autosquash = true
+
+[submodule]
+    recurse = true
