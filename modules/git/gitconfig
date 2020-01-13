@@ -31,6 +31,7 @@
     fpush = push --force-with-lease
     newbranch = "!(git worktree add -b $1 ../$1) && echo OK"
     pick = cherry-pick
+    rebaseo = "!(git fetch origin) && (git rebase --autostash -i origin/master)"
     tree = log --oneline --decorate --graph --abbrev-commit --author-date-order
     upush = "!(git push --set-upstream $1 $(git symbolic-ref HEAD | sed s:refs/heads/::)) && echo OK"
     xtree = log --decorate --graph --topo-order
