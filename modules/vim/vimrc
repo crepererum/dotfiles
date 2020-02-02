@@ -8,6 +8,9 @@ set mouse=a
 set shell=/usr/bin/bash
 set hidden
 
+" TUI or host (e.g. for vscode)
+let l:is_tui=!exists('g:vscode')
+
 " neovim fixes
 runtime! python_setup.vim
 
@@ -129,11 +132,13 @@ filetype off
 Plug 'junegunn/vim-plug'
 
 " restore_vim.vim
-Plug 'vim-scripts/restore_view.vim'
-let g:skipview_files = [
-    \'.git/COMMIT_EDITMSG',
-    \'.git/rebase-merge/git-rebase-todo'
-    \]
+if l:is_tui
+    Plug 'vim-scripts/restore_view.vim'
+    let g:skipview_files = [
+        \'.git/COMMIT_EDITMSG',
+        \'.git/rebase-merge/git-rebase-todo'
+        \]
+endif
 
 " vimproc
 " required for VimShell
@@ -168,53 +173,59 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 " language server (autocompletion, warnings/errors)
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ 'rust': ['ra_lsp_server'],
-    \ }
-let g:LanguageClient_selectionUI = 'fzf'
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> <F3> :call LanguageClient_textDocument_formatting()<CR>
-nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
+if l:is_tui
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+    let g:LanguageClient_serverCommands = {
+        \ 'python': ['pyls'],
+        \ 'rust': ['ra_lsp_server'],
+        \ }
+    let g:LanguageClient_selectionUI = 'fzf'
+    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+    nnoremap <silent> <F3> :call LanguageClient_textDocument_formatting()<CR>
+    nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
+endif
 
 " fzf (required for LanguageClient)
 Plug 'junegunn/fzf'
 
 " auto-completion engine
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+if l:is_tui
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+    set completeopt=noinsert,menuone,noselect
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-path'
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+endif
 
 " Snippets
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'honza/vim-snippets'
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.local/share/neovim/vim-snippets/snippets'
-imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-j>     <Plug>(neosnippet_expand_target)
-imap <expr><TAB>
-\ pumvisible() ? "\<C-n>" :
-\ neosnippet#expandable_or_jumpable() ?
-\    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-set conceallevel=2 concealcursor=niv
-Plug 'ncm2/ncm2-neosnippet'
+if l:is_tui
+    Plug 'Shougo/neosnippet.vim'
+    Plug 'Shougo/neosnippet-snippets'
+    Plug 'honza/vim-snippets'
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#snippets_directory='~/.local/share/neovim/vim-snippets/snippets'
+    imap <C-j>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-j>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-j>     <Plug>(neosnippet_expand_target)
+    imap <expr><TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ neosnippet#expandable_or_jumpable() ?
+    \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+    \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    set conceallevel=2 concealcursor=niv
+    Plug 'ncm2/ncm2-neosnippet'
+endif
 
 " PreserveNoEOL
 " required by editorconfig to handle this specific rule
@@ -226,7 +237,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " VCS diffs
-Plug 'mhinz/vim-signify'
+if l:is_tui
+    Plug 'mhinz/vim-signify'
+endif
 
 " GIT commands
 Plug 'tpope/vim-fugitive'
@@ -239,13 +252,15 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/vimshell.vim'
 
 " startify
-Plug 'mhinz/vim-startify'
-hi StartifyBracket ctermfg=240
-hi StartifyFooter  ctermfg=111
-hi StartifyHeader  ctermfg=203
-hi StartifyNumber  ctermfg=215
-hi StartifyPath    ctermfg=245
-hi StartifySlash   ctermfg=240
+if l:is_tui
+    Plug 'mhinz/vim-startify'
+    hi StartifyBracket ctermfg=240
+    hi StartifyFooter  ctermfg=111
+    hi StartifyHeader  ctermfg=203
+    hi StartifyNumber  ctermfg=215
+    hi StartifyPath    ctermfg=245
+    hi StartifySlash   ctermfg=240
+endif
 
 " shebang filetype detection
 Plug 'vitalk/vim-shebang'
@@ -258,7 +273,9 @@ let g:julia_latex_to_unicode = 0
 Plug 'rust-lang/rust.vim'
 
 " numbertoggle
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+if l:is_tui
+    Plug 'jeffkreeftmeijer/vim-numbertoggle'
+endif
 
 " CTRL-P
 Plug 'ctrlpvim/ctrlp.vim'
