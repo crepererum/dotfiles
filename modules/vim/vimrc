@@ -9,7 +9,7 @@ set shell=/usr/bin/bash
 set hidden
 
 " TUI or host (e.g. for vscode)
-let l:is_tui=!exists('g:vscode')
+let is_tui=!exists('g:vscode')
 
 " neovim fixes
 runtime! python_setup.vim
@@ -132,7 +132,7 @@ filetype off
 Plug 'junegunn/vim-plug'
 
 " restore_vim.vim
-if l:is_tui
+if is_tui
     Plug 'vim-scripts/restore_view.vim'
     let g:skipview_files = [
         \'.git/COMMIT_EDITMSG',
@@ -173,7 +173,7 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 " language server (autocompletion, warnings/errors)
-if l:is_tui
+if is_tui
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
@@ -194,7 +194,7 @@ endif
 Plug 'junegunn/fzf'
 
 " auto-completion engine
-if l:is_tui
+if is_tui
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
     autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -208,7 +208,7 @@ if l:is_tui
 endif
 
 " Snippets
-if l:is_tui
+if is_tui
     Plug 'Shougo/neosnippet.vim'
     Plug 'Shougo/neosnippet-snippets'
     Plug 'honza/vim-snippets'
@@ -237,7 +237,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " VCS diffs
-if l:is_tui
+if is_tui
     Plug 'mhinz/vim-signify'
 endif
 
@@ -252,7 +252,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/vimshell.vim'
 
 " startify
-if l:is_tui
+if is_tui
     Plug 'mhinz/vim-startify'
     hi StartifyBracket ctermfg=240
     hi StartifyFooter  ctermfg=111
