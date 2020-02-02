@@ -174,7 +174,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['ra_lsp_server'],
     \ }
 let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
