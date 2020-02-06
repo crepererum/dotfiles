@@ -270,7 +270,7 @@ let g:julia_latex_to_unicode = 0
 Plug 'rust-lang/rust.vim'
 
 " numbertoggle
-if l:is_tui
+if is_tui
     Plug 'jeffkreeftmeijer/vim-numbertoggle'
 endif
 
