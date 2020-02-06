@@ -150,10 +150,7 @@ Plug 'Shougo/neocomplcache.vim'
 
 " tomorrow theme
 Plug 'chriskempson/base16-vim'
-set rtp+=~/.vim/plugged/base16-vim
-set background=dark
 let base16colorspace=256
-colorscheme base16-bright
 
 " SudoRead and SudoWrite
 Plug 'chrisbra/SudoEdit.vim'
@@ -380,3 +377,5 @@ let &colorcolumn=join(range(121,999),",")
 call plug#end()
 filetype plugin indent on
 
+" color goes last for some reason
+colorscheme base16-default-dark
