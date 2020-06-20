@@ -41,6 +41,8 @@ alias .- "cd -"
 alias ... "cd ../.."
 alias .... "cd ../../.."
 
+alias testfonts "echo -e 'Normal, \x1b[1mbold\x1b[22m, \x1b[3mitalic\x1b[23m, \x1b[1;3mbold italic\x1b[22;23m'"
+
 # short forms
 alias nv nvim
 
