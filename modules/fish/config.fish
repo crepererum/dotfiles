@@ -63,3 +63,6 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
     base16-bright
 end
+
+# starship prompt
+starship init fish | source
