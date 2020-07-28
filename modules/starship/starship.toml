@@ -1,0 +1,20 @@
+[directory]
+style = "bold green"
+
+[git_branch]
+style = "bold blue"
+
+[git_status]
+disabled = true
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
