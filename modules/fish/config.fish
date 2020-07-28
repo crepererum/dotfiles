@@ -22,9 +22,9 @@ set fish_greeting ""
 set -gx PATH $HOME/scripts $HOME/.cargo/bin $PATH
 
 # enable conda
-set conda_fish $HOME/miniconda3/etc/fish/conf.d/conda.fish
-if test -e $conda_fish
-    source $conda_fish
+set conda_exe $HOME/miniconda3/bin/conda
+if test -e $conda_exe
+    eval $conda_exe "shell.fish" "hook" $argv | source
 end
 
 # colorful man pages
