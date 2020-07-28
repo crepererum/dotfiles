@@ -180,11 +180,13 @@ if is_tui
         \ 'rust': ['ra_lsp_server'],
         \ }
     let g:LanguageClient_selectionUI = 'fzf'
-    nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-    nnoremap <silent> <F3> :call LanguageClient_textDocument_formatting()<CR>
-    nnoremap <silent> <F4> :call LanguageClient_textDocument_codeAction()<CR>
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+    nnoremap <silent> <F3> :call LanguageClient#textDocument_formatting()<CR>
+    nnoremap <silent> <F4> :call LanguageClient#textDocument_codeAction()<CR>
+    let g:LanguageClient_useVirtualText = "No"
+    let g:LanguageClient_useFloatingHover = 1
 endif
 
 " fzf (required for LanguageClient)
