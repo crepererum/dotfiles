@@ -34,6 +34,7 @@
     praise = blame -c
     rebaseo = "!(git fetch origin) && (git rebase --autostash -i origin/master)"
     s = switch
+    sc = switch --create
     tree = log --oneline --decorate --graph --abbrev-commit --author-date-order
     upush = "!(git push --set-upstream $1 $(git symbolic-ref HEAD | sed s:refs/heads/::)) && echo OK"
     upusho = upush origin
