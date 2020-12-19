@@ -72,4 +72,6 @@ if status --is-interactive
 end
 
 # starship prompt
-starship init fish | source
+if type -q starship
+    starship init fish | source
+end
