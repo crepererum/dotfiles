@@ -75,3 +75,9 @@ end
 if type -q starship
     starship init fish | source
 end
+
+# Poetry
+set poetry_env "$HOME/.poetry/env"
+if test -e "$poetry_env"
+    source "$poetry_env"
+end
