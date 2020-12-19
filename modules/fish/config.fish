@@ -57,11 +57,18 @@ function q++o
     clang++ -std=c++14 -O2 -Wall -Weverything -Wno-c++98-compat -Wno-c99-extensions -o (rootname $argv[1]) $argv
 end
 
+# rootname (strip suffix)
+function rootname
+    echo $argv[1] | sed 's/\.[^.]*$//'
+end
+
 # Base16 Shell
 if status --is-interactive
     set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
-    base16-bright
+    if test -e "$BASE16_SHELL"
+        source "$BASE16_SHELL/profile_helper.fish"
+        base16-bright
+    end
 end
 
 # starship prompt
