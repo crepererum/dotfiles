@@ -28,18 +28,22 @@
     get = clone --depth 1
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2 | git show --stdin'"
     fixup = commit --amend --no-edit --date=now
-    fpush = push --force-with-lease
+    fpush = push --force-with-lease origin-push
     newbranch = "!(git worktree add -b $1 ../$1) && echo OK"
     pick = cherry-pick
     praise = blame -c
     rebaseo = "!(git fetch origin) && (git rebase --autostash -i origin/master)"
     s = switch
     sc = switch --create
+    setup-origin-push = "!(git remote add origin-push $(git config remote.origin.url)) && (git fetch origin-push)"
     tree = log --oneline --decorate --graph --abbrev-commit --author-date-order
     upush = "!(git push --set-upstream $1 $(git symbolic-ref HEAD | sed s:refs/heads/::)) && echo OK"
-    upusho = upush origin
+    upusho = upush origin-push
     xtree = log --decorate --graph --topo-order
     wdiff = diff --color-moved --color-words --ignore-all-space
+
+[checkout]
+    defaultRemote = origin
 
 [webui]
     autoupdate = true
