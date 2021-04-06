@@ -1,0 +1,26 @@
+window:
+  startup_mode: Maximized
+
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font
+    style: Regular
+
+  bold:
+    family: SauceCodePro Nerd Font
+    style: Bold
+
+  italic:
+    family: SauceCodePro Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: SauceCodePro Nerd Font
+    style: Bold Italic
+
+  size: 12.0
+
+
+shell:
+  program: /usr/bin/tmux
