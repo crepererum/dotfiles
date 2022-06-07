@@ -76,6 +76,11 @@ if type -q starship
     starship init fish | source
 end
 
+# kubectl
+if type -q kubectl
+    kubectl completion fish | source
+end
+
 # Poetry
 set poetry_env "$HOME/.poetry/env"
 if test -e "$poetry_env"
