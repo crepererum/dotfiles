@@ -10,6 +10,9 @@ style = "bold blue"
 [git_status]
 disabled = true
 
+[nodejs]
+disabled = true
+
 [package]
 disabled = true
 
