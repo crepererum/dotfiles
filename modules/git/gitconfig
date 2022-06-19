@@ -3,6 +3,7 @@
     excludesfile = ~/.gitignore
     hooksPath = ~/.githooks
     sparsecheckout = true
+    whitespace = warn
 
 [feature]
     manyFiles = true
