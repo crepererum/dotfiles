@@ -1,6 +1,9 @@
 [directory]
 style = "bold green"
 
+[elm]
+disabled = true
+
 [git_branch]
 style = "bold blue"
 
