@@ -57,6 +57,9 @@ if status --is-interactive
     if test -e "$BASE16_SHELL"
         source "$BASE16_SHELL/profile_helper.fish"
         base16-bright
+
+	# fix dark blue
+	set -U fish_color_command normal
     end
 end
 
