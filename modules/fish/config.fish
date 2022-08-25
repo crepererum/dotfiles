@@ -78,3 +78,9 @@ set poetry_env "$HOME/.poetry/env"
 if test -e "$poetry_env"
     source "$poetry_env"
 end
+
+# OPAM
+set opam_script "$HOME/.opam/opam-init/init.fish"
+if test -e "$opam_script"
+    source "$opam_script"
+end
