@@ -19,6 +19,12 @@ if test -e $conda_exe
     eval $conda_exe "shell.fish" "hook" $argv | source
 end
 
+# enable micromamda
+set micromamba_exe /usr/bin/micromamba
+if test -e $micromamba_exe
+    eval $micromamba_exe shell --shell fish hook $argv | source
+end
+
 # colorful man pages
 set -xU LESS_TERMCAP_mb (printf "\e[01;31m")      # begin blinking
 set -xU LESS_TERMCAP_md (printf "\e[01;31m")      # begin bold
