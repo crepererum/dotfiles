@@ -1,6 +1,9 @@
 # default editor
 set -x EDITOR nvim
 
+# podman instead of docker
+set -x DOCKER_HOST "unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+
 # default key bindings (sometimes missing, for some reason)
 set fish_key_bindings fish_default_key_bindings
 
