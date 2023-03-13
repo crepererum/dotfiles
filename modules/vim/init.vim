@@ -260,11 +260,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'terryma/vim-expand-region'
 
 " incremental search
-Plug 'haya14busa/incsearch.vim'
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map <silent> <F8> :nohlsearch<CR>
+Plug 'kevinhwang91/nvim-hlslens'
 
 " exchange
 Plug 'tommcdo/vim-exchange'
@@ -328,6 +324,7 @@ colorscheme melange
 lua << EOF
 local cmp = require('cmp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local hlslens = require('hlslens')
 local lualine = require('lualine')
 local lsp_signature = require('lsp_signature')
 local lsp_status = require('lsp-status')
@@ -370,6 +367,17 @@ cmp.setup({
         }
     ),
 })
+
+
+-- hlslens
+hlslens.setup()
+local kopts = {noremap = true, silent = true}
+vim.api.nvim_set_keymap('n', 'n',
+    [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+    kopts)
+vim.api.nvim_set_keymap('n', 'N',
+    [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+    kopts)
 
 
 -- lualine
