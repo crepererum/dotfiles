@@ -79,5 +79,9 @@
 [submodule]
     recurse = true
 
+[index]
+    # cargo/libgit2 are broken, see https://github.com/rust-lang/cargo/issues/11857
+    skipHash = false
+
 [init]
     defaultBranch = main
