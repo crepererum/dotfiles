@@ -4,6 +4,7 @@
     hooksPath = ~/.githooks
     sparsecheckout = true
     whitespace = warn
+    attributesfile = ~/.gitattributes
 
 [feature]
     manyFiles = true

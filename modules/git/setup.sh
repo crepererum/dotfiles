@@ -3,9 +3,10 @@
 set -euo pipefail
 
 # cleanup
-rm -rIf ~/.gitconfig ~/.gitignore
+rm -rIf ~/.gitattributes ~/.gitconfig ~/.gitignore
 
-# link .gitconfig and .gitignore
+# link files
+ln -s $mdir/gitattributes ~/.gitattributes
 ln -s $mdir/gitconfig ~/.gitconfig
 ln -s $mdir/gitignore ~/.gitignore
 
