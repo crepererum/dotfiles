@@ -15,6 +15,7 @@
     signingkey = 0x91A1F090016B1CC2
 
 [push]
+    autoSetupRemote = true
     default = simple
 
 [pull]
