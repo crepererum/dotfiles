@@ -28,6 +28,7 @@
     addgh = "!(echo '[remote \"'$1'\"]\n    fetch = +refs/heads/*:refs/remotes/'$1'/*\n    url = git@github.com:'$1'/'$2'.git\n    fetch = +refs/pull/*/head:refs/remotes/'$1'/pr/*' >> .git/config) && echo OK"
     co = checkout
     cob = checkout -b
+    defaultbranch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
     get = clone --depth 1 --no-tags
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2 | git show --stdin'"
     fixup = commit --amend --no-edit --date=now
@@ -35,7 +36,7 @@
     newbranch = "!(git worktree add -b $1 ../$1) && echo OK"
     pick = cherry-pick
     praise = blame -c
-    rebaseo = "!(git fetch origin) && (git rebase --autostash -i origin/master)"
+    rebaseo = "!(git fetch origin) && (git rebase --autostash -i origin/\"$(git defaultbranch)\")"
     s = switch
     sc = switch --create
     setup-origin-push = "!(git remote add origin-push $(git config remote.origin.url)) && (git fetch origin-push)"
