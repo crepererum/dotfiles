@@ -22,7 +22,7 @@ end
 # enable micromamda
 set micromamba_exe /usr/bin/micromamba
 if test -e $micromamba_exe
-    eval $micromamba_exe shell --shell fish hook $argv | source
+    eval $micromamba_exe shell hook --shell fish $argv | source
 end
 
 # colorful man pages
