@@ -11,7 +11,7 @@ set fish_key_bindings fish_default_key_bindings
 set fish_greeting ""
 
 # extend PATH
-set -gx PATH $HOME/scripts $HOME/go/bin $HOME/.cargo/bin $HOME/.krew/bin $PATH
+set -gx PATH $HOME/scripts $HOME/go/bin $HOME/.cargo/bin $HOME/.krew/bin $HOME/.local/bin $PATH
 
 # enable conda
 set conda_exe $HOME/miniconda3/bin/conda
