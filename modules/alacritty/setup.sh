@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-# remove old alacritty.yml
-rm -rf ~/.config/alacritty/alacritty.yml
+# remove old alacritty.toml
+rm -rf ~/.config/alacritty/alacritty.toml
 
-# link config.fish
+# link config
 mkdir -p ~/.config/alacritty
-ln -s $mdir/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s $mdir/alacritty.toml ~/.config/alacritty/alacritty.toml
