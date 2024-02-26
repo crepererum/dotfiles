@@ -401,12 +401,6 @@ let g:julia_latex_to_unicode = 0
 " rust
 Plug 'rust-lang/rust.vim'
 
-" CTRL-P
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Ripgrep
-Plug 'jremmen/vim-ripgrep'
-
 " EasyMotion
 Plug 'Lokaltog/vim-easymotion'
 
