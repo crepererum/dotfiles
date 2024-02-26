@@ -282,6 +282,7 @@ telescope.load_extension('ui-select')
 telescope.load_extension('undo')
 vim.keymap.set('n', '<leader>ff', telescope_builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
+vim.keymap.set('n', '<leader>ft', telescope_builtin.builtin, {})
 vim.keymap.set('n', '<leader>u', telescope.extensions.undo.undo, {})
 
 -- undo/redo history
