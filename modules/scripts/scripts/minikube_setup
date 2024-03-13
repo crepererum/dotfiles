@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euxo pipefail
+
+minikube start \
+    --addons=csi-hostpath-driver \
+    --addons=metrics-server \
+    --addons=local-path-provisioner \
+    --addons=volumesnapshots \
+    --cni=cilium \
+    --container-runtime=cri-o \
+    --cpus=6 \
+    --driver=kvm2 \
+    --kubernetes-version=stable \
+    --memory=8G \
+    --nodes=2
