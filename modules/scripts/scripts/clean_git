@@ -16,13 +16,13 @@ for w in $worktrees; do
             local_branch="$(git -C "$w" rev-parse --abbrev-ref HEAD)"
 
             set +e
-            remote_branch="$(git -C "$w" rev-parse --abbrev-ref --symbolic-full-name @{u} 2> /dev/null)"
+            remote_branch="$(git -C "$w" rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2> /dev/null)"
             has_remote=$?
             set -e
 
             if [[ $has_remote == 0 ]]; then
                 echo "        => w/ remote"
-                if [[ "x$(git -C $w rev-parse $local_branch)" == "x$(git -C "$w" rev-parse "$remote_branch")" ]]; then
+                if [[ "$(git -C "$w" rev-parse "$local_branch")" == "$(git -C "$w" rev-parse "$remote_branch")" ]]; then
                     echo "          => in-sync"
                     echo "            => DELETE"
                     rm -rf "$w"
