@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-input=$1
-output=$2
+input="$1"
+output="$2"
 
-cp $1 $2
-strip $2
-upx --best --lzma $2
+cp "$input" "$output"
+strip "$output"
+upx --best --lzma "$output"
