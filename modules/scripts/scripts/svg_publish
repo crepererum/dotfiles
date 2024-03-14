@@ -2,19 +2,30 @@
 
 set -euo pipefail
 
-if [ "$#" -ne 2 ]; then
-    echo "Usage: $(basename "$0") <INPUT> <OUTPUT>"
+# CLI parsing
+if [ "$#" -ne 1 ] && [ "$#" -ne 2 ]; then
+    echo "Usage: $(basename "$0") <INPUT> [<OUTPUT>]"
     exit 1
 fi
 
 input="$1"
-output="$2"
+if [ "$#" -eq 2 ]; then
+    output="$2"
+else
+    output="$input"
+fi
+tmpdir="$(mktemp -d)"
 
-if ! [[ "$output" =~ ^.*.svgz$ ]]; then
-    echo "output must be a .svgz file"
+if [[ "$output" =~ ^.*.svg$ ]]; then
+    svgz=0
+elif [[ "$output" =~ ^.*.svgz$ ]]; then
+    svgz=1
+else
+    echo "output must be a .svg or .svgz file"
     exit 1
 fi
 
+# render fonts and optimize svg
 inkscape \
     --export-plain-svg \
     --export-text-to-path \
@@ -23,8 +34,21 @@ inkscape \
     "$input" \
 | svgo \
     --input="-" \
-    --output="-" \
-| gzip \
-    --stdout \
-    --best \
-> "$output"
+    --output="$tmpdir/tmp.svg" \
+    --quiet
+
+# maybe compress
+if [[ "$svgz" == 1 ]]; then
+    mv "$tmpdir/tmp.svg" "$tmpdir/tmp2.svg"
+
+    gzip \
+        --stdout \
+        --best \
+    > "$tmpdir/tmp.svg" < "$tmpdir/tmp2.svg"
+fi
+
+# move to output
+mv "$tmpdir/tmp.svg" "$output"
+
+# clean up
+rm -r "$tmpdir"
