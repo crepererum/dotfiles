@@ -26,6 +26,20 @@ else
 fi
 
 # render fonts and optimize svg
+cat << EOF > "$tmpdir/svgo.config.mjs"
+export default {
+  multipass: true,
+  plugins: [
+    "removeEditorsNSData",
+    "reusePaths",
+    {
+      name: 'preset-default',
+    },
+    "removeXlink",
+  ],
+};
+EOF
+
 inkscape \
     --export-plain-svg \
     --export-text-to-path \
@@ -33,6 +47,7 @@ inkscape \
     --vacuum-defs \
     "$input" \
 | svgo \
+    --config="$tmpdir/svgo.config.mjs" \
     --input="-" \
     --output="$tmpdir/tmp.svg" \
     --quiet
