@@ -13,4 +13,4 @@ ln -s $mdir/config.fish ~/.config/fish/config.fish
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 # install fisherman plugins
-fish -c "fisher add fishpkg/fish-prompt-metro"
+fish -c "fisher install fishpkg/fish-prompt-metro"
