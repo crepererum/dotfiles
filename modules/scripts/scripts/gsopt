@@ -2,13 +2,18 @@
 
 set -euo pipefail
 
-if [ "$#" -ne 2 ]; then
+if [[ "$#" != 2 ]]; then
     echo "Usage: gsopt <INPUT> <OUTPUT>"
     exit 1
 fi
 
-input="$1"
-output="$2"
+readonly input="$1"
+readonly output="$2"
+
+if [[ "$input" == "$output" ]]; then
+    echo "input and output must be different"
+    exit 1
+fi
 
 exec gs \
     -dBATCH \
