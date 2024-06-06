@@ -82,6 +82,11 @@ if type -q kubectl
     kubectl completion fish | source
 end
 
+# jj / jujutsu
+if type -q jj
+    jj util completion fish | source
+end
+
 # Poetry
 set poetry_env "$HOME/.poetry/env"
 if test -e "$poetry_env"
