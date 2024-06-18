@@ -40,7 +40,11 @@ require('lazy').setup({
     'L3MON4D3/LuaSnip',
 
     -- rust
-    'simrat39/rust-tools.nvim',
+    {
+        'mrcjkb/rustaceanvim',
+        -- This plugin is already lazy
+        lazy = false,
+    },
     'nvim-lua/popup.nvim',
 
     -- status line
@@ -95,7 +99,6 @@ local nvim_autopairs = require('nvim-autopairs')
 local nvim_autopairs_comp = require('nvim-autopairs.completion.cmp')
 local nvim_tree = require('nvim-tree')
 local nvim_tree_api = require('nvim-tree.api')
-local rust_tools = require('rust-tools')
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
 local telescope_themes = require('telescope.themes');
@@ -236,7 +239,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>d', telescope_builtin.diagnostics, bufopts)
     vim.keymap.set('n', 'gr', telescope_builtin.lsp_references)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
 end
 
 local capabilities = vim.tbl_extend('keep', vim.lsp.protocol.make_client_capabilities(), lsp_status.capabilities)
@@ -245,12 +248,13 @@ capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true
 }
-rust_tools.setup({
-    server = {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-})
+vim.g.rustaceanvim = {
+  -- LSP configuration
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
+}
 
 -- search
 vim.opt.ignorecase = true
