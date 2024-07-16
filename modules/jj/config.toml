@@ -1,0 +1,14 @@
+[aliases]
+rebase_all = ["rebase", "-s", "all:roots(main..@)", "-d", "main"]
+
+[snapshot]
+# 10 MB
+max-new-file-size = 10485760
+
+[user]
+email = "marco@crepererum.net"
+name = "Marco Neumann"
+
+[ui]
+default-command = ["log", "-r", "::@"]
+diff-editor = ":builtin"
