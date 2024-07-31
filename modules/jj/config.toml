@@ -12,3 +12,4 @@ name = "Marco Neumann"
 [ui]
 default-command = ["log", "-r", "::@"]
 diff-editor = ":builtin"
+merge-editor = ":builtin"
