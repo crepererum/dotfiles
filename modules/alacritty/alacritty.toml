@@ -21,5 +21,4 @@ style = "Regular"
 program = "/usr/bin/tmux"
 
 [window]
-# See https://github.com/alacritty/alacritty/issues/7465
-# startup_mode = "Maximized"
+startup_mode = "Maximized"
