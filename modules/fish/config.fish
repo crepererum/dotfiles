@@ -98,6 +98,13 @@ if type -q uv
     uv generate-shell-completion fish | source
 end
 
+# GKE
+set -x USE_GKE_GCLOUD_AUTH_PLUGIN True
+set gcloud_fish /opt/google-cloud-cli/path.fish.inc
+if test -e $gcloud_fish
+    source $gcloud_fish
+end
+
 # OPAM
 set opam_script "$HOME/.opam/opam-init/init.fish"
 if test -e "$opam_script"
