@@ -93,6 +93,11 @@ if test -e "$poetry_env"
     source "$poetry_env"
 end
 
+# uv
+if type -q uv
+    uv generate-shell-completion fish | source
+end
+
 # OPAM
 set opam_script "$HOME/.opam/opam-init/init.fish"
 if test -e "$opam_script"
