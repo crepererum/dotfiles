@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # create .config/htop if not exist
-mkdir -p ~/.confg/htop
+mkdir -p ~/.config/htop
 
 # cleanup
 rm -f ~/.config/htop/htoprc
