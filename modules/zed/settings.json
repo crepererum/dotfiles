@@ -29,5 +29,10 @@
   "inlay_hints": {
     "enabled": true
   },
-  "vim_mode": true
+  "vim_mode": true,
+  "auto_install_extensions": {
+    "harper": true,
+    "html": true,
+    "one-hunter": true
+  }
 }
