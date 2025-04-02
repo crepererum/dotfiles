@@ -1,0 +1,36 @@
+FROM quay.io/toolbx/arch-toolbox:latest
+
+# no debug packages needed
+RUN sed -i -e '/OPTIONS/s/debug/!debug/' /etc/makepkg.conf
+
+# set up build user
+RUN useradd --create-home --groups wheel toolbox-build
+USER toolbox-build
+
+# bootstrap paru
+RUN cd /home/toolbox-build \
+    && git clone --depth=1 https://aur.archlinux.org/paru-bin.git \
+    && cd paru-bin \
+    && makepkg --install --noconfirm --syncdeps
+
+# Install extra packages
+COPY extra-packages /
+RUN paru -Syu --needed --noconfirm $(cat /extra-packages) \
+    && yes | sudo pacman -Scc \
+    && sudo rm /extra-packages
+
+# switch back to default user
+USER root
+RUN userdel --remove toolbox-build
+
+# gen locale
+RUN echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen \
+    && locale-gen
+
+# add shims
+COPY shims/docker /usr/local/bin/docker
+COPY shims/flatpak-spawn-host /usr/local/bin/flatpak-spawn-host
+RUN ln -s /usr/local/bin/flatpak-spawn-host /usr/local/bin/podman \
+    && ln -s /usr/lib/flatpak-xdg-utils/xdg-email /usr/local/bin/xdg-email \
+    && ln -s /usr/lib/flatpak-xdg-utils/xdg-open /usr/local/bin/xdg-open
+
