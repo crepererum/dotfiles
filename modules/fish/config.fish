@@ -93,6 +93,9 @@ if test -e "$poetry_env"
     source "$poetry_env"
 end
 
+# samply
+set -x SAMPLY_USE_DEBUGINFOD 1
+
 # uv
 if type -q uv
     uv generate-shell-completion fish | source
