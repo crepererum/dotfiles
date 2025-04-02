@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -euo pipefail
+
+set +e
+restic --verbose init
+st=$?
+set -e
+
+restic --verbose unlock
+
+if [ $st -eq 0 ]; then
+    echo "new init done"
+elif [ $st -eq 1 ]; then
+    echo "init done before"
+else
+    echo "init failed"
+    exit $st
+fi
+
+restic --verbose=2 backup --exclude-file=/exclude /data
+restic --verbose forget --prune --keep-last=10 --keep-daily=14 --keep-weekly=8 --keep-monthly=24

@@ -1,0 +1,3 @@
+restic.env
+secrets/*
+!secrets/.gitkeep

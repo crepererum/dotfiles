@@ -1,0 +1,15 @@
+[Unit]
+Description=restic
+
+[Container]
+Image=ghcr.io/restic/restic
+Exec=
+Entrypoint=/entrypoint
+
+Mount=type=bind,src=%h,dst=/data,readonly
+Mount=type=bind,src=%E/containers/systemd/restic.entrypoint,dst=/entrypoint,readonly
+Mount=type=bind,src=%E/containers/systemd/restic.exclude,dst=/exclude,readonly
+
+EnvironmentFile=%E/containers/systemd/restic.env
+
+SecurityLabelDisable=true
