@@ -32,9 +32,11 @@ pandoc-cli
 parallel
 postgresql-libs
 protobuf
+proxychains-ng
 pwgen
 ripgrep
 shellcheck
+socat
 starship
 tmux
 typst
