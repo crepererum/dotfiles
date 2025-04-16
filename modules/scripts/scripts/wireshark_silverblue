@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# != 1 ]]; then
+    echo "Usage: $(basename "$0") <INTERFACE>"
+    exit 1
+fi
+
+readonly interface="$1"
+
+fifo_location="$(mktemp --directory)"
+fifo_name="$(mktemp --dry-run --tmpdir="$fifo_location")"
+mkfifo --mode=600 "$fifo_name"
+
+flatpak run --filesystem="$fifo_location" org.wireshark.Wireshark -k --interface "$fifo_name" &
+run0 bash -c "tcpdump --interface='$interface' -w - >> '$fifo_name'"
