@@ -7,11 +7,21 @@ RUN sed -i -e '/OPTIONS/s/debug/!debug/' /etc/makepkg.conf
 RUN useradd --create-home --groups wheel toolbox-build
 USER toolbox-build
 
+# update package index and pre-installed packages
+RUN sudo pacman -Syu --needed --noconfirm
+
 # bootstrap paru
 RUN cd /home/toolbox-build \
     && git clone --depth=1 https://aur.archlinux.org/paru-bin.git \
     && cd paru-bin \
     && makepkg --install --noconfirm --syncdeps
+
+# https://bbs.archlinux.org/viewtopic.php?id=304984
+RUN cd /home/toolbox-build \
+    && wget https://archive.archlinux.org/packages/p/python-prompt_toolkit/python-prompt_toolkit-3.0.50-1-any.pkg.tar.zst \
+    && wget https://archive.archlinux.org/packages/p/python-prompt_toolkit/python-prompt_toolkit-3.0.50-1-any.pkg.tar.zst.sig \
+    && sudo pacman --noconfirm -U python-prompt_toolkit-3.0.50-1-any.pkg.tar.zst \
+    && echo 'IgnorePkg = python-prompt_toolkit' | sudo tee --append /etc/pacman.conf
 
 # Install extra packages
 COPY extra-packages /
