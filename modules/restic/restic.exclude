@@ -6,6 +6,7 @@
 /data/.jupyter
 /data/.krew
 /data/.kube/cache
+/data/.lmstudio/
 /data/.local/bin
 /data/.local/share
 /data/.local/state
