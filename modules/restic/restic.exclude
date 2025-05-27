@@ -17,8 +17,8 @@
 /data/.pytensor
 /data/.rustup
 /data/.var/app
-/data/data/tcpdump
 /data/Downloads
+/data/data/tcpdump
 /data/go
 /data/src
 /data/tmux.history
