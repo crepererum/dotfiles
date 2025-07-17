@@ -3,19 +3,10 @@
 set -euo pipefail
 
 # cleanup
-rm -rIf ~/.gitattributes ~/.gitconfig ~/.gitignore
+rm -rIf ~/.gitattributes ~/.gitconfig ~/.gitignore ~/.config/git
 
 # link files
-ln -s $mdir/gitattributes ~/.gitattributes
-ln -s $mdir/gitconfig ~/.gitconfig
-ln -s $mdir/gitignore ~/.gitignore
-
-# create hooks if not exist
-mkdir -p ~/.githooks
-
-# link all hooks to that directory
-for f in $mdir/hooks/*; do
-    t="$HOME/.githooks/$(basename $f)"
-    rm -f "$t"
-    ln -s "$f" "$t"
-done
+mkdir -p ~/.config/git
+ln -s $mdir/gitattributes ~/.config/git/attributes
+ln -s $mdir/gitconfig ~/.config/git/config
+ln -s $mdir/gitignore ~/.config/git/ignore

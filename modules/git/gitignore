@@ -14,3 +14,10 @@
 
 # Mac OS
 .DS_Store
+
+# IDE
+.zed/
+
+# AI
+CLAUDE.md
+.claude/
