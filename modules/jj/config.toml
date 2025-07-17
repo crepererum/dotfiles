@@ -13,8 +13,7 @@ name = "Marco Neumann"
 [ui]
 default-command = ["log", "-r", "::@"]
 diff-editor = ":builtin"
+diff-formatter = ":git"
 merge-editor = ":builtin"
 pager = "delta"
 
-[ui.diff]
-format = "git"
