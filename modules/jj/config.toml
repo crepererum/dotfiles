@@ -1,6 +1,11 @@
 [aliases]
 rebase_all = ["rebase", "-s", "all:roots(main..@)", "-d", "main"]
 recent = ["util", "exec", "bash", "--", "-c", "jj --color=never bookmark list --template='self.normal_target().committer().timestamp().local() ++ \"\t\" ++ self.name() ++ \"\t\" ++ self.normal_target().description().first_line() ++ \"\n\"' | sort --reverse | column -s \"\t\" -t | less -R"]
+watch_log = [
+    "util", "exec", "--",
+    "watch", "--color", "--interval=1", "--no-title", "--",
+    "jj", "log", "--color=always",
+]
 
 [snapshot]
 # 10 MB
