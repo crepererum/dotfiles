@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+REGION="us"
+
+gcloud auth print-access-token | podman login \
+    "https://${REGION}-docker.pkg.dev" \
+    --username=oauth2accesstoken \
+    --password-stdin
